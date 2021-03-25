@@ -1,14 +1,25 @@
+$minimize-screen: 800px;
+$phone-screen: 600px;
+
 .MainNav{
-  position: fixed;
   width: 100%;
+  height: 5.5em;
+  position: fixed;
   top: 0;
   overflow: hidden;
 
-   background-color: beige;
+  background-color: #2f2f2b;
+  color: snow;
   display: flex;
+
   align-items: center;
   justify-content: center;
+
   padding: 1em;
-  height: 4em;
-  border: 5px solid black;
+  border-bottom: 1px solid rgba(245, 245, 220, 0.5);
+}
+@media (max-width: $minimize-screen) {
+  .bigNav {
+    visibility: hidden;
+  }
 }

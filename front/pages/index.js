@@ -4,7 +4,8 @@ import Layout from "../component/Layout";
 export default function Home() {
   return (
       <Layout title={"Home"}>
-        ma couillennxnxnxnxnxnnxnxnxnxnx<br/>
+          <div className={styles.mainHome}>
+          </div>
       </Layout>
   )
 }

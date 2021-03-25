@@ -2,7 +2,7 @@ import styles from "../styles/Header.module.scss"
 
 const Header=()=>(
     <div className={styles.mainHeader}>
-        Je suis un header
+        Vol au dessus d'un dev
     </div>
 )
 export default Header;
