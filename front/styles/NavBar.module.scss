@@ -1,0 +1,14 @@
+.MainNav{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  overflow: hidden;
+
+   background-color: beige;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  height: 4em;
+  border: 5px solid black;
+}
