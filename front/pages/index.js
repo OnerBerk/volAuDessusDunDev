@@ -1,5 +1,5 @@
-import styles from '../styles/Home.module.scss'
-import Layout from "../component/Layout";
+import styles from '../styles/home.module.scss'
+import Layout from "../component/layout";
 
 export default function Home() {
   return (

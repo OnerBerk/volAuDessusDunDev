@@ -1,10 +1,12 @@
 import Head from "next/head";
-import Header from "./Header";
-import NavBar from "./NavBar";
+import styles from "../styles/layout.module.scss"
+
+import Header from "./header";
+import NavBar from "./navBar";
 
 const Layout = (props) => (
 
-    <div className="Layout">
+    <div className={styles.mainLayout}>
         <Head>
             <title> Mon App {props.title} </title>
         </Head>

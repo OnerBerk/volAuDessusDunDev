@@ -1,4 +1,4 @@
-import styles from "../styles/Header.module.scss"
+import styles from "../styles/header.module.scss"
 
 const Header=()=>(
     <div className={styles.mainHeader}>

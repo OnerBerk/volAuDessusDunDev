@@ -18,8 +18,17 @@ $phone-screen: 600px;
   padding: 1em;
   border-bottom: 1px solid rgba(245, 245, 220, 0.5);
 }
+
+.menuNav{
+  display: flex;
+  list-style: none;
+}
+.menuNav li{
+  padding: 0.3em;
+  font-size: 2em;
+}
 @media (max-width: $minimize-screen) {
-  .bigNav {
+  .menuNav {
     visibility: hidden;
   }
 }

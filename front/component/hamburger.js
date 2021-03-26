@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {Squash as Hamburger} from 'hamburger-react'
 import Link from "next/link"
-import styles from '../styles/Hamburger.module.scss'
+import styles from '../styles/hamburger.module.scss'
 
 const HamburgerMenu = () => {
     const [open, setOpen] = useState(false)
