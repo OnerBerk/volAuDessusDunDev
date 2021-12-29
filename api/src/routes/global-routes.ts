@@ -1,8 +1,8 @@
-import express, { Router } from 'express';
+import { Router } from 'express';
 const router = Router();
+import { Hello } from '../controllers/global-controllers/global-controller';
 
-router.get('/', (req, res) => {
-  res.send('hello');
-});
+/* get */
+router.route('/').get(Hello);
 
 module.exports = router;
