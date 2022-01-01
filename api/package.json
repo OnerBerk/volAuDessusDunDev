@@ -8,7 +8,8 @@
     "dev": "NODE_ENV=development nodemon",
     "build": "rimraf dist && tsc",
     "start": "NODE_ENV=production node",
-    "lintfix": "eslint src --fix --cache"
+    "lintfix": "eslint src --fix --cache",
+    "db:create": "sequelize-cli db:create"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
@@ -21,16 +22,18 @@
     "nodemon": "^2.0.15",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
+    "sequelize-cli": "^6.3.0",
     "ts-node": "^10.4.0",
-    "typescript": "^4.5.4",
-    "sequelize-cli": "^6.3.0"
+    "typescript": "^4.5.4"
   },
   "dependencies": {
     "@types/bcrypt": "^5.0.0",
+    "@types/pg": "^8.6.3",
     "bcrypt": "^5.0.1",
-    "express": "^4.17.2",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "express-validator": "^6.14.0",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
