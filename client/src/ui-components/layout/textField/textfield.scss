@@ -1,0 +1,19 @@
+.textfield-main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 0.5em;
+  label{
+    font-size: 0.6em;
+    color: #5b4949;
+  }
+  input{
+    border: none;
+    outline: none;
+    height: 2em;
+    background-color: transparent;
+    border-bottom: 2px solid black;
+  }
+
+}

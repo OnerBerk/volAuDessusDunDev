@@ -1,0 +1,18 @@
+.header-main{
+  height: 4em;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  justify-content: center;
+  align-items: center;
+  img{
+    width: 3.5em;
+  }
+}
+
+@media screen and(max-width: 750px) {
+  .header-main{
+    img{
+      width: 2.5em;
+    }
+  }
+}

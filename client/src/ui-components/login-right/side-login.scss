@@ -1,0 +1,15 @@
+.side-login-main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: rgb(255,255,255);
+  background: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(154, 197, 186) 83%, rgb(117, 171, 165) 100%);
+}
+
+@media screen and(max-width: 750px) {
+  .side-login-main{
+    background: linear-gradient(rgb(255, 255, 255),rgb(154, 197, 186));
+    height: 50vh;
+  }
+}
