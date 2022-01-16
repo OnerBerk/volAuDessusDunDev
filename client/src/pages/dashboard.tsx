@@ -1,6 +1,12 @@
+import HorizontalSplitLayout from "../ui-components/layout/horizontal-split-layout/horizontal-split-layout";
+import Header from "../ui-components/header/header";
+import logo from "../asset/brain2.png"
+
 const Dashboard=()=>{
 return(
-    <div style={{backgroundColor:"gainsboro"}}> dashboard </div>
+    <HorizontalSplitLayout top={
+        <Header img={logo}>Savoir Developpé</Header>
+    } bottom={<div> Dashboard</div>}/>
 )
 }
 export default Dashboard

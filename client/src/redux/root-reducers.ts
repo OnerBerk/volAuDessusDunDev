@@ -1,7 +1,7 @@
 import {combineReducers} from "@reduxjs/toolkit";
-import store from './store'
+import store from './store/store'
 
-import {LoginSlice} from "../../pages/login/login.reducer";
+import {LoginSlice} from "../component/login-form/login.reducer";
 
 const rootReducer = combineReducers({
     login: LoginSlice.reducer

@@ -1,21 +1,23 @@
 .double-layout-main {
   margin: -0.5em;
-  min-height: 100vh;
+  height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1.5fr;
-  grid-template-row:0;
+  grid-template-row: 0;
   transition: grid-template-row 0.5s;
   border-left: 15px solid darkorange;
 }
 
 @media screen and(max-width: 750px) {
-  .double-layout-main{
+  .double-layout-main {
     grid-template-columns: 1fr;
-    grid-template-rows: 50vh 1fr;
-    .double-layout-right{
-    }
-    .double-layout-left{
 
+    .double-layout-right {
+
+    }
+
+    .double-layout-left {
+      height: 85vh;
     }
   }
 }
