@@ -7,8 +7,8 @@ type PublicRouteProps = {
 }
 
 const PublicRoute=({component:RouteComponent, path}:PublicRouteProps)=>{
-    const token = localStorage.getItem("chat-auth");
+    const token = localStorage.getItem("user");
     if (token===null){return <RouteComponent />}
-    return <Navigate to="/home"/>
+    return <Navigate to="/"/>
 }
 export default PublicRoute

@@ -2,9 +2,8 @@ import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import { IUser } from '../../interfaces/interfaces';
 import db from '../../sequelize/models';
-import { where } from 'sequelize';
-
-const User = require('../../sequelize/models/user');
+import { tokenGen } from '../../utils/token-gen/token-gen';
+import { user } from '../../sequelize/seeders/users';
 
 const Registration = async (req: Request, res: Response) => {
   const password = req.body.password;
@@ -32,12 +31,21 @@ const Login = async (req: Request, res: Response) => {
     email: req.body.email,
     password: req.body.password
   };
-  console.log(auth.email);
-  const user = await db.User.findOne({ where: { email: auth.email } });
-  if (user === null) {
-    res.json({ err: 'this user does not exist' });
+  if (auth.email != null || undefined) {
+    const user: IUser = await db.User.findOne({ where: { email: auth.email } });
+    if (user === null) {
+      res.json({ err: 'this user does not exist' });
+    } else {
+      const isEqual = await bcrypt.compare(auth.password, user.password);
+      if (!isEqual) {
+        res.json({ err: 'Entries are incorrect' });
+      } else {
+        const token = tokenGen({ userId: user.id });
+        res.json({ userId: user.id, token: token });
+      }
+    }
   } else {
-    res.json({ user: user });
+    res.json({ err: 'entry are invalid' });
   }
 };
 

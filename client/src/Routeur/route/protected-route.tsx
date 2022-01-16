@@ -7,8 +7,8 @@ type ProtectedRouteProps = {
 }
 
 const ProtectedRoute = ({ path, component:RouteComponent}: ProtectedRouteProps) => {
-    const token = localStorage.getItem("chat-auth");
+    const token = localStorage.getItem("user");
     if (token && token.length > 0){return <RouteComponent />}
-    return <Navigate to="/"/>
+    return <Navigate to="/login"/>
 };
 export default ProtectedRoute;

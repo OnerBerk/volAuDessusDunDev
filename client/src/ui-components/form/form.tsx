@@ -3,17 +3,18 @@ import UiButton from "../ui-button/ui-button";
 import "./form.scss"
 
 type FormProps={
+    children:React.ReactNode
     onSubmit:()=>void
-    inputArray:React.ReactNode[]
+
 }
 
-const Form=({onSubmit, inputArray}:FormProps)=>{
+const Form=({ children,onSubmit}:FormProps)=>{
 return(
     <div className="form-main">
         <h1>Sign-in</h1>
-        <form onSubmit={onSubmit}>
-            {inputArray}
-            <UiButton type="submit" label="Login"/>
+        <form>
+            {children}
+            <UiButton onClick={onSubmit} type="button" label="Login"/>
         </form>
     </div>
 

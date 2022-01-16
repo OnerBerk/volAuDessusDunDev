@@ -16,9 +16,9 @@
 
 @media screen and(max-width: 750px) {
   .form-main {
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
-    form{margin-top: -1em;}
+    form{
+    box-shadow: none;
+    margin-top: -1em;}
     h1 {font-size: 1.3em;}
-    form {box-shadow: none;}
   }
 }

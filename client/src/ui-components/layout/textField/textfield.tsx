@@ -1,20 +1,44 @@
 import "./textfield.scss"
 
 type TextFieldProps = {
+    type: string
     value: string | number
     setValue: (e: any) => void
     label: string
-    placeholder?:string
+    placeholder?: string
+    setIsError: (isError: boolean) => void
+    isError: boolean
+    errorMessage: string
+    setIsErrorMessage: (errorMessage: string) => void
 }
 
-const Textfield = ({label, value, setValue,placeholder}: TextFieldProps) => {
+
+const Textfield = ({
+                       type,
+                       label,
+                       value,
+                       setValue,
+                       placeholder,
+                       isError,
+                       setIsError,
+                       errorMessage,
+                       setIsErrorMessage
+                   }: TextFieldProps) => {
     return (
         <div className="textfield-main">
-            <label>{label}</label>
+            <label className={isError ? 'label-error' : ''}>{label}</label>
             <input
-                placeholder={placeholder}
+                type={type}
+                className={isError ? 'error' : ''}
                 value={value}
-                onChange={(e) => setValue(e.target.value)}/>
+                placeholder={placeholder}
+                onChange={(e) => {
+                    setIsError(false)
+                    setIsErrorMessage("")
+                    setValue(e.target.value)
+                }}
+            />
+            {errorMessage ? <p className='errorMess'> {errorMessage}</p> : <p></p>}
         </div>
     )
 }

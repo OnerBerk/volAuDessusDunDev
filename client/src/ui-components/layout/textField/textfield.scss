@@ -8,12 +8,28 @@
     font-size: 0.6em;
     color: #5b4949;
   }
+  .label-error{
+    font-size: 0.6em;
+    color: #de1818;
+  }
   input{
+      border: none;
+      outline: none;
+      height: 2em;
+      background-color: transparent;
+      border-bottom: 2px solid black;
+  }
+  .error{
     border: none;
     outline: none;
     height: 2em;
     background-color: transparent;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #de1818;
+    color: #de1818 ;
+  }
+  p{
+    color: #de1818;
+    font-size: 0.4em;
   }
 
 }
