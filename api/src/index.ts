@@ -13,8 +13,8 @@ const PORT = 8080 || process.env;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
-app.use(passport.initialize());
-app.use(passport.session());
+//app.use(passport.initialize());
+//app.use(passport.session());
 
 /* Routes */
 app.use('/api/v1', global_routes);

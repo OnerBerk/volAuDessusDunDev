@@ -11,7 +11,9 @@ const initialState: LoginState = {
     payload: {}
 }
 
-export const logIn = createAsyncThunk('login', async ({email,password}:any, thunkAPI) => {
+export const logIn = createAsyncThunk(
+    'login',
+    async ({email,password}:any, thunkAPI) => {
     const response = await AuthServices.loginUser(email,password);
     return response;
 });

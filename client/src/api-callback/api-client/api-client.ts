@@ -28,7 +28,6 @@ const apiRequest = async ({route, data, params, method}: Irequest) => {
         })
         return req.data
     } catch (err:any) {
-        console.log(err.response.data)
         return err.response.data.message
     }
 }
