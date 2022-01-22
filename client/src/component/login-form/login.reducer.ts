@@ -8,7 +8,7 @@ export type LoginState = {
 
 const initialState: LoginState = {
     isLoading: false,
-    payload: {}
+    payload: {userId:null,token:"",err:""}
 }
 
 export const logIn = createAsyncThunk(
@@ -32,7 +32,10 @@ export const LoginSlice = createSlice({
             state.isLoading = true;
         });
         builder.addCase(logIn.fulfilled, (state, { payload }) => {
-            state = { payload, isLoading: false };
+            state = {
+                payload:{userId: payload.userId,token: payload.token,err:payload.err},
+                isLoading: false
+            };
             return state;
         });
         builder.addCase(logIn.rejected, (state, errors) => {

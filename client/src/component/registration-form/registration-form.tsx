@@ -39,7 +39,7 @@ const RegistrationForm = ({setSign, sign}: RegistrationFormProps) => {
     const [confirmpwdMsgErr, setConfirmPwdMsgErr] = useState('');
 
     const checkError = () => {
-        let emailRegex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
+        let emailRegex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
 
         if (
             lastname.length === 0 ||
@@ -57,12 +57,10 @@ const RegistrationForm = ({setSign, sign}: RegistrationFormProps) => {
                 setLastnameMsgErr("Le nom doit être spécifié")
             }
             if (firstname.length === 0) {
-                console.log("firstname")
                 setIsFirstnameErr(true)
                 setFirstnameMsgErr("Le prénom doit être spécifié")
             }
             if (email.length === 0) {
-                console.log("email")
                 setIsEmailErr(true)
                 setEmailMsgErr("L'email doit être spécifié")
             }
@@ -95,13 +93,15 @@ const RegistrationForm = ({setSign, sign}: RegistrationFormProps) => {
     const handleSubmit = async () => {
         if (!checkError()) {
         } else {
-            dispatch(signUp({lastname, firstname, email, password}));
-            navigate("/login")
+            dispatch(signUp({lastname, firstname, email, password}))
         }
     }
 
     return (
-        <Form sign={sign} setSign={setSign} onSubmit={handleSubmit}>
+        <Form
+            sign={sign}
+            setSign={setSign}
+            onSubmit={handleSubmit}>
             <Textfield
                 type="text"
                 label="Lastname"

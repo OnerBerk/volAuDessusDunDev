@@ -10,7 +10,7 @@ import Contact from "../../pages/contact";
 const Router = () => {
     return (
         <Routes>
-            <Route path="/login" element={<AuthRegistration/>}/>
+            <Route path="/login" element={ <AuthRegistration/>}/>
             <Route path="/" element={<ProtectedRoute component={Dashboard} />} />
             <Route path="/contact" element={<ProtectedRoute component={Contact} />} />
         </Routes>

@@ -1,8 +1,10 @@
 require('dotenv').config();
 import express from 'express';
+import session from 'express-session';
 import passport from 'passport';
 
 import db from './sequelize/models';
+
 const cors = require('cors');
 const global_routes = require('./routes/global-routes');
 const users_routes = require('./routes/users-routes');
@@ -13,8 +15,15 @@ const PORT = 8080 || process.env;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
-//app.use(passport.initialize());
-//app.use(passport.session());
+app.use(
+  session({
+    secret: 'yokkokeokeokeok',
+    saveUninitialized: true,
+    resave: true
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 /* Routes */
 app.use('/api/v1', global_routes);

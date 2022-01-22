@@ -33,12 +33,10 @@ export const SignupSlice = createSlice({
             state.isLoading = true;
         });
         builder.addCase(logIn.fulfilled, (state, {payload}) => {
-console.log("fulfilled",payload)
             state = {payload, isLoading: false};
             return state;
         });
         builder.addCase(logIn.rejected, (state, errors) => {
-            console.log(state)
             state.isLoading = false;
         });
     })
