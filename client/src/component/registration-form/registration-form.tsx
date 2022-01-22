@@ -98,7 +98,7 @@ const RegistrationForm = ({setSign, sign}: RegistrationFormProps) => {
     }
 
     return (
-        <div style={{marginTop:-30}}>
+        <div style={{marginTop:-50}}>
             <Form
                 sign={sign}
                 setSign={setSign}
