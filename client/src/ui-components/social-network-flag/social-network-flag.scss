@@ -1,0 +1,34 @@
+
+.social-net-flag-main {
+  width: 15em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ab9494;
+  border-radius: 4px;
+  height: 2em;
+  margin-bottom: 1em;
+  cursor: pointer;
+  padding: 0.1em 1em;
+
+  h1 {
+    font-size: 1em;
+    font-weight: normal;
+
+    .facebook {
+      color: blue;
+    }
+
+    .google {
+      color: #de1818;
+    }
+  }
+
+  img {
+    cursor: pointer;
+    height: 1.5em;
+  }
+}
+.social-net-flag-main:hover{
+  background-color: rgba(65, 154, 131, 0.16);
+}

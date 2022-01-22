@@ -1,8 +1,9 @@
 import "./side-login.scss"
+
 const SideLogin = () => {
     return (
         <div className="side-login-main">
-           side todo png
+            side todo png
         </div>
     )
 }

@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Rootstate} from "../../redux/root-reducers";
 import {logIn, LoginState} from "./login.reducer";
 import {useNavigate} from "react-router-dom";
+import SocialSignin from "../social-signIn/social-Signin";
 
 type LoginFormProps = {
     setSign: (sign: boolean) => void
@@ -69,6 +70,7 @@ const LoginForm = ({setSign, sign}: LoginFormProps) => {
         }
     }
     return (
+        <>
         <Form sign={sign} setSign={setSign} onSubmit={handleSubmit}>
             <Textfield
                 type="email"
@@ -89,6 +91,8 @@ const LoginForm = ({setSign, sign}: LoginFormProps) => {
                 value={password}
                 setValue={setPassword}/>
         </Form>
+            <SocialSignin/>
+        </>
     )
 }
 
