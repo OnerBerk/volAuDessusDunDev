@@ -3,7 +3,6 @@ import bcrypt from 'bcrypt';
 import { IUser } from '../../interfaces/interfaces';
 import db from '../../sequelize/models';
 import { tokenGen } from '../../utils/token-gen/token-gen';
-import { user } from '../../sequelize/seeders/users';
 
 const Registration = async (req: Request, res: Response) => {
   const password = req.body.password;
@@ -49,7 +48,12 @@ const Login = async (req: Request, res: Response) => {
   }
 };
 
+const protectedTest = (req: Request, res: Response) => {
+  res.json(req.user);
+};
+
 module.exports = {
   Registration,
-  Login
+  Login,
+  protectedTest
 };

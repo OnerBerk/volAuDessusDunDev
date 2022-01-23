@@ -1,40 +1,45 @@
 import passport from 'passport';
 
-const LocalStrategy = require('passport-local').Strategy;
-import bcrypt from 'bcrypt';
+const FacebookStrategy = require('passport-facebook');
+const GoogleStrategy = require('passport-google-oauth20');
 
-const User = require('../sequelize/models/user');
+import facebookConfig from './facebook-config';
+import googleConfig from './google-config';
+import { Response } from 'express';
 
-module.exports = () => {
-  passport.serializeUser((user, done) => {
-    done(null, user);
-  });
-  passport.deserializeUser((user, done) => {
-    // @ts-ignore
-    done(null, user);
-  });
-  passport.use(
-    new LocalStrategy(
-      {
-        usernameField: 'email',
-        passwordField: 'password',
-        session: true
-      },
-      async function (username: string, password: string, done: any) {
-        console.log(`trying to log in as ${username}`);
-        const user = await User.findOne({ where: { email: username } });
-        if (!user) {
-          return done(null, false);
-        }
-        bcrypt.compare(password, user.password, function (err, res) {
-          if (res) {
-            console.log('successful login');
-            return done(null, user);
-          } else {
-            return done(null, false);
-          }
-        });
-      }
-    )
-  );
-};
+passport.use(
+  'facebook',
+  new FacebookStrategy(
+    {
+      clientID: facebookConfig.facebookAuth.clientID,
+      clientSecret: facebookConfig.facebookAuth.clientSecret,
+      callbackURL: facebookConfig.facebookAuth.callbackURL
+    },
+    async (accessToken: string, refreshToken: string, profile: any, done: any) => {
+      return done(null, profile);
+    }
+  )
+);
+
+passport.use(
+  'google',
+  new GoogleStrategy(
+    {
+      clientID: googleConfig.googleAuth.clientID,
+      clientSecret: googleConfig.googleAuth.clientSecret,
+      callbackURL: googleConfig.googleAuth.callbackURL,
+      passToCallBack: true
+    },
+    async (accessToken: any, refreshToken: any, profile: any, done: any) => {
+      return done(null, { profile: profile, token: accessToken });
+    }
+  )
+);
+
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+passport.deserializeUser((user, done) => {
+  // @ts-ignore
+  done(null, user);
+});
