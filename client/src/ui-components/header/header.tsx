@@ -1,10 +1,8 @@
-import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {LoginState, resetLoginState} from "../../component/login-form/login.reducer";
+import {useDispatch} from "react-redux";
+import { resetLoginState} from "../../component/login-form/login.reducer";
 import disconnect from "../../asset/disconnect.png"
 import "./header.scss"
-import {Rootstate} from "../../redux/root-reducers";
 import {resetSocialState, socialLogout} from "../../component/login-form/social-login.reducer";
 
 type HeaderProps = {
