@@ -1,14 +1,15 @@
-import {useNavigate} from "react-router-dom";
-import face from "../../asset/facebook .png";
-import googleLogo from "../../asset/google.png"
-import "./social-signIn.scss"
-import SocialNetworkFlag from "../../ui-components/social-network-flag/social-network-flag";
-import axios from "axios";
 import {useEffect} from "react";
+import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
+
+import SocialNetworkFlag from "../../ui-components/social-network-flag/social-network-flag";
 import {SocialLoginState, socialResponse} from "../login-form/social-login.reducer";
 import {Rootstate} from "../../redux/root-reducers";
-import layout from "../../ui-components/layout/simple-layout/layout";
+
+import facebookLogo from "../../asset/facebook .png";
+import googleLogo from "../../asset/google.png"
+import githubLogo from "../../asset/github.png"
+import "./social-signIn.scss"
 
 
 const SocialSignin = () => {
@@ -35,23 +36,18 @@ const SocialSignin = () => {
     const google = async () => {
         await window.open("http://localhost:8080/api/v1/auth/google", "_self",)
     }
-
-    const facebook = () => {
-        let timer: NodeJS.Timeout | null = null
-        const newWindow = window.open("http://localhost:8080/api/v1/auth/facebook", "_blank", "width=500,height=600")
-        if (newWindow) {
-            timer = setInterval(() => {
-                if (newWindow.closed) {
-                    console.log("next step")
-                }
-                if (timer) clearInterval(timer)
-            }, 500)
-        }
+    const facebook = async () => {
+        await window.open("http://localhost:8080/api/v1/auth/facebook", "_self",)
     }
+    const github = async () => {
+        await window.open("http://localhost:8080/api/v1/auth/github", "_blank",)
+    }
+
     return (
         <div className="social-signin-main">
-            <SocialNetworkFlag onClick={facebook} color="#358bb0" logo={face} networkName="Facebook"/>
+            <SocialNetworkFlag onClick={facebook} color="#358bb0" logo={facebookLogo} networkName="Facebook"/>
             <SocialNetworkFlag onClick={google} color="#de1818" logo={googleLogo} networkName="Google"/>
+            <SocialNetworkFlag onClick={github} color="#443D3DFF" logo={githubLogo} networkName="GitHub"/>
         </div>
     )
 }

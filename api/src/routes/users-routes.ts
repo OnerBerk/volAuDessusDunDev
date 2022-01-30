@@ -16,6 +16,9 @@ const userController = require('../controllers/users/users-controller');
 router.get('/auth/google', SocialLogin('google'));
 router.get('/auth/google/callback', SocialCallback('google'));
 
+router.get('/auth/github', SocialLogin('github'));
+router.get('/auth/github/callback', SocialCallback('github'));
+
 router.get('/auth/facebook', SocialLogin('facebook'));
 router.get('/auth/facebook/callback', SocialCallback('facebook'));
 

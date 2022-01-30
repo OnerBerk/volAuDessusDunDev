@@ -10,17 +10,26 @@
   margin-bottom: 1em;
   cursor: pointer;
   padding: 0.5em 1em;
-
   h1 {
     font-size: 1em;
     font-weight: normal;
   }
-
   img {
     cursor: pointer;
-    height: 1.5em;
   }
 }
 .social-net-flag-main:hover{
   background-color: rgba(65, 154, 131, 0.16);
+}
+@media screen and(max-width: 750px) {
+ .social-net-flag-main{
+   height: 1em;
+   h1{
+     font-size: 0.8em;
+   }
+   img{
+     height: 1em;
+     width: 1em;
+   }
+ }
 }

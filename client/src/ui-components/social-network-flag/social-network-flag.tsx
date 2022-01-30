@@ -14,6 +14,8 @@ const SocialNetworkFlag = ({logo, networkName, color, onClick}: SocialNetworkFla
             onClick={onClick}
             className="social-net-flag-main">
             <img
+                height={30}
+                width={30}
                 alt="facebook signin logo"
                 src={logo}/>
             <h1> Sign-in with <span style={{color: `${color}`}}>{networkName}</span></h1>

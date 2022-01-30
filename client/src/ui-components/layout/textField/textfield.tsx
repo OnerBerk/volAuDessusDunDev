@@ -26,7 +26,8 @@ const Textfield = ({
                    }: TextFieldProps) => {
     return (
         <div className="textfield-main">
-            <label className={isError ? 'label-error' : ''}>{label}</label>
+            <label className={isError ? 'label-error' : ''}>
+                {label}
             <input
                 type={type}
                 className={isError ? 'error' : ''}
@@ -38,6 +39,7 @@ const Textfield = ({
                     setValue(e.target.value)
                 }}
             />
+            </label>
             {errorMessage ? <p className='errorMess'> {errorMessage}</p> : <p></p>}
         </div>
     )
