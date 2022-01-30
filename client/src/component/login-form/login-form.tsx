@@ -28,7 +28,7 @@ const LoginForm = ({setSign, sign}: LoginFormProps) => {
     const [pwdMsgErr, setPwdMsgErr] = useState('');
 
 
-    const checkError = () => {
+    const checkInputError = () => {
         if (email.length === 0 || password.length === 0) {
             if (email.length === 0) {
                 setIsEmailErr(true)
@@ -42,55 +42,54 @@ const LoginForm = ({setSign, sign}: LoginFormProps) => {
         }
         return true
     }
-    useEffect(()=>{},[pwdMsgErr])
-
-
-    useEffect(() => {
-        if (payload.err) {
+    const checkServerError = () => {
+        if (payload.err && payload.err.length > 0) {
             setIsPwdErr(true)
             setIsEmailErr(true)
             setPwdMsgErr(payload.err)
+            return false
         } else {
-            if (payload.token && payload.token.length > 0) {
-
-                localStorage.setItem('user',
-                    JSON.stringify(
-                        {userId: payload.userId, userToken: payload.token})
-                )
-                navigate("/")
-            } else {
+            if (payload.token.length > 0) {
+                localStorage.setItem('userToken', payload.token)
+                localStorage.setItem('user', JSON.stringify({userId: payload.userId}))
+                return true
+            }else {
+               return false
             }
         }
-    }, [payload])
+    }
+
+    useEffect(() => {}, [pwdMsgErr])
+    useEffect(() => {checkServerError() && navigate("/")}, [payload])
 
 
     const handleSubmit = async () => {
-        if (checkError()) {
+        if (checkInputError()) {
             dispatch(logIn({email, password}));
         }
     }
     return (
         <>
-        <Form sign={sign} setSign={setSign} onSubmit={handleSubmit}>
-            <Textfield
-                type="email"
-                label="Email"
-                isError={isEmailErr}
-                setIsError={setIsEmailErr}
-                errorMessage={emailMsgErr}
-                setIsErrorMessage={setEmailMsgErr}
-                value={email}
-                setValue={setEmail}/>
-            <Textfield
-                type="password"
-                label="Password"
-                isError={isPwdErr}
-                setIsError={setIsPwdErr}
-                errorMessage={pwdMsgErr}
-                setIsErrorMessage={setPwdMsgErr}
-                value={password}
-                setValue={setPassword}/>
-        </Form>
+            <Form sign={sign} setSign={setSign} onSubmit={handleSubmit}>
+                <Textfield
+                    type="email"
+                    label="Email"
+                    isError={isEmailErr}
+                    setIsError={setIsEmailErr}
+                    errorMessage={emailMsgErr}
+                    setIsErrorMessage={setEmailMsgErr}
+                    value={email}
+                    setValue={setEmail}/>
+                <Textfield
+                    type="password"
+                    label="Password"
+                    isError={isPwdErr}
+                    setIsError={setIsPwdErr}
+                    errorMessage={pwdMsgErr}
+                    setIsErrorMessage={setPwdMsgErr}
+                    value={password}
+                    setValue={setPassword}/>
+            </Form>
             <SocialSignin/>
         </>
     )

@@ -21,10 +21,11 @@ router.get('/auth/facebook/callback', SocialCallback('facebook'));
 
 router.get('/socialLogin/success', SocialLoginSuccess);
 router.get('/socialLogin/failed', SocialLoginFailed);
-router.get('/logout', SocialLogout);
+router.get('/socialLogin/logout', SocialLogout);
 
 router.post('/registration', regiterValidator(), validate, userController.Registration);
 router.post('/login', userController.Login);
-router.get('/socialUser', isLoggedIn, userController.protectedTest);
+
+router.get('/socialUser', isLoggedIn, userController.getSocialUser);
 
 module.exports = router;

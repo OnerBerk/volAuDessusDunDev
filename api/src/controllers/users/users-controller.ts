@@ -24,7 +24,6 @@ const Registration = async (req: Request, res: Response) => {
       res.send({ error_message: e });
     });
 };
-
 const Login = async (req: Request, res: Response) => {
   const auth = {
     email: req.body.email,
@@ -48,12 +47,12 @@ const Login = async (req: Request, res: Response) => {
   }
 };
 
-const protectedTest = (req: Request, res: Response) => {
+const getSocialUser = (req: Request, res: Response) => {
   res.json(req.user);
 };
 
 module.exports = {
   Registration,
   Login,
-  protectedTest
+  getSocialUser
 };

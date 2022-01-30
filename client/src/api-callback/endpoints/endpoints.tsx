@@ -1,5 +1,6 @@
 export let BASE_API="http://localhost:8080/api/v1"
 export const SOCIAL_SIGIN_SUCCESS ="/socialLogin/success"
 export const SOCIAL_SIGIN_FAILED ="/socialLogin/failed"
+export const SOCIAL_LOGOUT ="/socialLogin/logout"
 export const SIGIN="/login"
 export const SIGNUP="/registration"

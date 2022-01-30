@@ -2,12 +2,12 @@ import { Request, Response } from 'express';
 import passport from 'passport';
 
 export const SocialLogin = (strategy: string) => {
-  return passport.authenticate(strategy, { scope: ['profile'] });
+  return passport.authenticate(strategy, { scope: ['profile', 'email'] });
 };
 
 export const SocialCallback = (strategy: string) => {
   return passport.authenticate(strategy, {
-    successRedirect: 'http://localhost:3000',
+    successRedirect: 'http://localhost:3000/',
     failureRedirect: 'http://localhost:8080/api/v1/socialLogin/failed'
   });
 };

@@ -4,6 +4,9 @@ import express from 'express';
 import session from 'express-session';
 import passport from 'passport';
 import db from './sequelize/models';
+import swaggerJsDoc from 'swagger-jsdoc';
+import swaggerUI from 'swagger-ui-express';
+import { swaggerOptions } from './swagger/swaggerOptions';
 
 const cors = require('cors');
 const global_routes = require('./routes/global-routes');
@@ -11,6 +14,7 @@ const users_routes = require('./routes/users-routes');
 
 const app = express();
 const PORT = 8080 || process.env;
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -22,6 +26,8 @@ app.use(
     resave: true
   })
 );
+
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 app.use(passport.initialize());
 app.use(passport.session());

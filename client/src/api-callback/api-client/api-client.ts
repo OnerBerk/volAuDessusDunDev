@@ -6,7 +6,8 @@ const ApiClient = () => {
     const {REACT_API_URL = BASE_API} = process.env
     const axiosInstance = axios.create({
         baseURL: REACT_API_URL,
-        responseType: 'json'
+        responseType: 'json',
+        withCredentials:true
     })
     return axiosInstance
 }
@@ -22,15 +23,14 @@ const apiRequest = async ({route, data, params, method}: Irequest) => {
                 Authorization: `Bearer ${authToken}`,
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Credentials': 'true',
+
             },
             data: {...data},
             params: {...params},
         })
         return req.data
-    } catch (err:any) {
+    } catch (err: any) {
         return err.response.data.message
     }
 }
-
-
 export default apiRequest

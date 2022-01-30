@@ -5,7 +5,9 @@ const GoogleStrategy = require('passport-google-oauth20');
 
 import facebookConfig from './facebook-config';
 import googleConfig from './google-config';
-import { Response } from 'express';
+import { IUser } from '../interfaces/interfaces';
+import db from '../sequelize/models';
+import models from '../sequelize/models';
 
 passport.use(
   'facebook',
@@ -31,7 +33,19 @@ passport.use(
       passToCallBack: true
     },
     async (accessToken: any, refreshToken: any, profile: any, done: any) => {
-      return done(null, { profile: profile, token: accessToken });
+      const socialUser = {
+        firstname: profile.name.familyName,
+        lastname: profile.name.givenName,
+        email: profile._json.email,
+        password: 'sksksk'
+      };
+      const user = await db.User.findOne({ where: { email: socialUser.email } });
+      if (user != null) {
+        return done(null, { lastname: user.lastname, firstname: user.firstname, email: user.email, accessToken });
+      } else {
+        await db.User.create(socialUser);
+        return done(null, { lastname: socialUser.lastname, firstname: socialUser.firstname, email: socialUser.email });
+      }
     }
   )
 );

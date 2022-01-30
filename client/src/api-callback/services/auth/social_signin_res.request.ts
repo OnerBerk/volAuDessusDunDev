@@ -1,5 +1,5 @@
 import apiClient from "../../api-client/api-client";
-import {SOCIAL_SIGIN_FAILED, SOCIAL_SIGIN_SUCCESS} from "../../endpoints/endpoints";
+import {SOCIAL_LOGOUT, SOCIAL_SIGIN_FAILED, SOCIAL_SIGIN_SUCCESS} from "../../endpoints/endpoints";
 
 const SocialSigninResponseServices = {
     successResponse:async ()=>apiClient({
@@ -10,6 +10,12 @@ const SocialSigninResponseServices = {
     }),
     failedResponse:async ()=>apiClient({
         route: SOCIAL_SIGIN_FAILED,
+        data: {},
+        params: undefined,
+        method: "GET"
+    }),
+    logout:async ()=>apiClient({
+        route: SOCIAL_LOGOUT,
         data: {},
         params: undefined,
         method: "GET"

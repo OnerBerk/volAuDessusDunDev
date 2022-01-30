@@ -13,7 +13,7 @@ const initialState: SocialLoginState = {
 }
 
 export const socialResponse = createAsyncThunk(
-    'succes reponse',
+    'success reponse',
     async ( thunkAPI) => {
         const response = await SocialSigninResponseServices.successResponse();
         return response;
@@ -33,7 +33,6 @@ export const SocialResponseSlice = createSlice({
             state.isLoading = true;
         });
         builder.addCase(socialResponse.fulfilled, (state, {payload}) => {
-            console.log(payload, state)
             state={
                 payload:payload,
                 isLoading:false
@@ -45,5 +44,13 @@ export const SocialResponseSlice = createSlice({
         });
     })
 })
+
+
+export const socialLogout = createAsyncThunk(
+    'success reponse',
+    async ( thunkAPI) => {
+        const response = await SocialSigninResponseServices.logout();
+        return response;
+    });
 
 export const {resetSocialState} = SocialResponseSlice.actions

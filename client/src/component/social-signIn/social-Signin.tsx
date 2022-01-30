@@ -4,39 +4,36 @@ import googleLogo from "../../asset/google.png"
 import "./social-signIn.scss"
 import SocialNetworkFlag from "../../ui-components/social-network-flag/social-network-flag";
 import axios from "axios";
+import {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {SocialLoginState, socialResponse} from "../login-form/social-login.reducer";
+import {Rootstate} from "../../redux/root-reducers";
+import layout from "../../ui-components/layout/simple-layout/layout";
 
 
 const SocialSignin = () => {
     const navigate = useNavigate()
-    const fetchUser = async () => {
-        const response = await axios.get(
-            'http://localhost:8080/api/v1//socialUser',
-            {withCredentials: true})
-            .catch((err) => {
-                console.log("something went wrong", err)
-            })
-        if (response && response.data) {
-            const user = response.data
-            localStorage.setItem('user', JSON.stringify({user: user.profile, token: user.token}))
+    const dispatch = useDispatch()
+
+    const {payload} = useSelector<Rootstate, SocialLoginState>(state => state.socialResponse)
+    useEffect(() => {
+        dispatch(socialResponse())
+    }, [])
+    useEffect(() => {
+        if (payload.user) {
+            localStorage.setItem('userToken', payload.user.accessToken)
+            localStorage.setItem('socialUser', JSON.stringify({
+                lastname: payload.user.lastname,
+                firstname: payload.user.firstname,
+                email: payload.user.email
+            }))
             navigate('/')
         }
-    }
 
-    fetchUser()
-
+    }, [payload])
 
     const google = async () => {
-        let timer: NodeJS.Timeout | null = null
-        const newWindow = window.open("http://localhost:8080/api/v1/auth/google", "_self",)
-        if (newWindow) {
-            timer = setInterval(() => {
-                if (newWindow.closed) {
-                    console.log("next step")
-
-                }
-                if (timer) clearInterval(timer)
-            }, 500)
-        }
+        await window.open("http://localhost:8080/api/v1/auth/google", "_self",)
     }
 
     const facebook = () => {
